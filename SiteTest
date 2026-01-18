@@ -3,13 +3,29 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Terminal, Cpu, Palette, ChevronDown, Github, Mail, ExternalLink } from 'lucide-react';
 
+/* PLACEMENT INSTRUCTIONS:
+   1. Go into your project folder 'sitetest'
+   2. Open the 'app' folder.
+   3. Save this code as 'page.jsx' inside that 'app' folder.
+*/
+
 const Portfolio = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
+
+  // Fix for hydration mismatch issues
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; 
+  }
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-300 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
