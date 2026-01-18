@@ -1,6 +1,7 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { Code, Terminal, Cpu, Palette, ChevronDown, Github, Twitter, Mail, ExternalLink } from 'lucide-react';
+import { Terminal, Cpu, Palette, ChevronDown, Github, Mail, ExternalLink } from 'lucide-react';
 
 const Portfolio = () => {
   const { scrollYProgress } = useScroll();
